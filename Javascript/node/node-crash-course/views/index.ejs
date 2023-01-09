@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HearMeOut | <%= title %> </title>
-</head>
+<%- include ('../partials/head.ejs') %> 
 <body>
-    <!-- <% const name='mario' %> -->
-    <nav>
-        <div class="site-title">
-            <!-- <p><%= name %> </p> -->
-            <a href="">
-                <h1>The only blogpost you wanna listen to</h1>
-            </a>
-            <p>Why  does everyone seem to care, me I don't</p>
-        </div>
-        <ul>
-            <li><a href="/">Blogs</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/blogs/create">New Blogs</a></li>
-        </ul>
-    </nav>
+    <%- include ('../partials/nav.ejs') %> 
 
     <div class="blogs_content">
         <h2>All blogs</h2>
         <!-- //dynamic stuff -->
+        
+            <% if(blogs.length > 0){ %> 
+                <%  blogs.forEach((blog)=>{ %>
+                    <h3 class="title"><%= blog.title %> </h3>
+                    <p class="snippet"><%=blog.snippet %>  </p>
+                <% }) %> 
+                
+        <% } else { %>
+            <p>There are no blogs to display</p>
+         <% } %> 
     </div>
+    <%- include ('../partials/footer.ejs') %> 
+
 </body>
 </html>

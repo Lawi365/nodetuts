@@ -1,7 +1,14 @@
 const express = require('express');
 
+//3rd party middleware.
+
+const morgan = require('morgan');
+
 // express app
 const app = express();
+
+//connect to mongondb
+const dburl = 'mongodb+srv://admin:<password>@nodetuts.ksmyxi0.mongodb.net/?retryWrites=true&w=majority'
 
 //registering view engines
 
@@ -11,10 +18,33 @@ app.set('view engine','ejs');
 //listen for requests
 app.listen(3000);
 
+//add middleware.
+// app.use((req,res,next)=>{
+//     console.log('First request made: ');
+//     console.log('host: ', req.hostname);
+//     console.log('path: ', req.path);
+//     console.log('method: ', req.method); next();
+// });
+// app.use((req,res,next)=>{
+//     console.log('another request has been made: ');
+//     next();
+// });
+
+//middleware and static sites
+app.use(express.static('public'))
+app.use(morgan('dev'));
+
 app.get('/',(req,res)=>{
+    const blogs = [
+        {title:'Lawrence Begins to blog',snippet:'It may come as a suprise but did you know that I write blogs'},
+        {title:'Lawrence Continues to blog',snippet:'It may come as a suprise but did you know that I write blogs'},
+        {title:'Lawrence Finished blogging',snippet:'It may come as a suprise but did you know that I write blogs'},
+       
+    ];
+
     // res.send('<p>home page</p>');
     // res.sendFile('./views/index.html',{root:__dirname});
-    res.render('index',{title: ' Home'});
+    res.render('index',{title: ' Home',blogs});
 });
 
 app.get('/about',(req,res)=>{
