@@ -1,5 +1,5 @@
 const express = require('express');
-
+const mongoose = require('mongoose')
 //3rd party middleware.
 
 const morgan = require('morgan');
@@ -8,8 +8,8 @@ const morgan = require('morgan');
 const app = express();
 
 //connect to mongondb
-const dburl = 'mongodb+srv://admin:<password>@nodetuts.ksmyxi0.mongodb.net/?retryWrites=true&w=majority'
-
+const dburl = 'mongodb+srv://admin:<Nodetuts123>@nodetuts.ksmyxi0.mongodb.net/?retryWrites=true&w=majority'
+mongoose.connect(dburl)
 //registering view engines
 
 app.set('view engine','ejs');
