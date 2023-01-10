@@ -9,7 +9,7 @@ const morgan = require('morgan');
 const app = express();
 
 //connect to mongondb
-const dburl = 'mongodb+srv://admin:Nodetuts123@nodetuts.ksmyxi0.mongodb.net/?retryWrites=true&w=majority'
+const dburl = 'mongodb+srv://<pass>@nodetuts.ksmyxi0.mongodb.net/?retryWrites=true&w=majority'
 mongoose.connect(dburl,{useNewUrlParser: true, useUnifiedTopology: true})
     .then((result) => app.listen(3000))
     .catch((err)=> console.log(err));
